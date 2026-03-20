@@ -17,6 +17,9 @@
 
 from database.connection import conectar
 from datetime import datetime, date
+from utils.con_utils import show_msg
+
+DEFAULT_DATA = datetime.strptime("2020-12-31", "%Y-%m-%d").date()
 
 def executar_modificacao(sql, valores):
     """
@@ -43,7 +46,7 @@ def executar_modificacao(sql, valores):
         conexao.commit()
     
     except Exception as e:
-        print("Erro ao executar a query: ", e)
+        show_msg("Erro ao executar a query: ", e)
     
     finally:
         if cursor: cursor.close()
@@ -69,7 +72,7 @@ def executar_consulta(sql, valores = None):
         resultado = cursor.fetchall()
         return resultado
     except Exception as e:
-        print("Erro ao consultar a base de dados: ", e)
+        show_msg("Erro ao consultar a base de dados: ", e)
         return []
     finally:
         if cursor: cursor.close()
@@ -100,7 +103,7 @@ def inserir_despesa(descricao, valor, data, id_categoria):
     """
     valores = (descricao, valor, data, id_categoria)
     executar_modificacao(sql, valores)
-    print("Despesa inserido com sucesso!")
+    show_msg("Despesa inserido com sucesso!")
 
     
 
@@ -127,11 +130,11 @@ def inserir_rendimento(descricao, valor, data):
     
     valores = (descricao, valor, data)
     executar_modificacao(sql, valores)
-    print("Rendimento inserido com sucesso!")
+    show_msg("Rendimento inserido com sucesso!")
 
 
 
-def listar_despesas(valor_min = 0, data_inicio = "2020-12-31", categoria = None):
+def listar_despesas(valor_min = 0.00, data_inicio = DEFAULT_DATA, categoria = None):
 
     """
     Lista despesas filtradas por valor mínimo, data mínima e categoria.
@@ -172,13 +175,11 @@ def listar_despesas(valor_min = 0, data_inicio = "2020-12-31", categoria = None)
 
     sql += " ORDER BY d.data DESC"
 
-    print("SQL:", sql)
-    print("Valores:", valores)
     despesas = executar_consulta(sql, tuple(valores))
     return despesas
 
 
-def listar_rendimentos(valor_min = 0, data_inicio = "2020-12-31"):
+def listar_rendimentos(valor_min = 0.00, data_inicio = DEFAULT_DATA):
     """
     Lista rendimentos filtrados por valor mínimo e data mínima.
 
@@ -209,3 +210,15 @@ def listar_rendimentos(valor_min = 0, data_inicio = "2020-12-31"):
     valores = (valor_min, data_inicio)
     rendimentos = executar_consulta(sql, valores)
     return rendimentos
+
+
+def listar_categorias():
+    """
+    Lista todas as categorias definidas
+    """
+
+    sql = """
+    SELECT * FROM categorias 
+    """
+    categorias = executar_consulta(sql)
+    return categorias

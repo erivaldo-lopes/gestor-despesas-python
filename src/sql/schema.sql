@@ -17,14 +17,14 @@ USE gestor_despesas;
 DROP TABLE IF EXISTS categorias;
 CREATE TABLE categorias(
 	id_categoria 			INT AUTO_INCREMENT PRIMARY KEY,
-    nome 					VARCHAR(100) NOT NULL
+    nome 					VARCHAR(20) NOT NULL
 );
 
 -- Tabela de despesas
 DROP TABLE IF EXISTS despesas;
 CREATE TABLE despesas(
 	id_despesa 				INT AUTO_INCREMENT PRIMARY KEY,
-    descricao 				VARCHAR(255) NOT NULL,
+    descricao 				VARCHAR(30) NOT NULL,
     valor					DECIMAL(10, 2) NOT NULL,
     data					DATE NOT NULL,	
     id_categoria			int,
@@ -36,7 +36,7 @@ CREATE TABLE despesas(
 DROP TABLE IF EXISTS rendimentos;
 CREATE TABLE rendimentos(
 	id_despesas				INT AUTO_INCREMENT PRIMARY KEY,
-    descricao				VARCHAR(255) NOT NULL,
+    descricao				VARCHAR(30) NOT NULL,
     valor					DECIMAL(10, 2) NOT NULL,
     data					DATE NOT NULL
 );
@@ -48,3 +48,11 @@ CREATE TABLE rendimentos(
 --         ('Lazer'),
 --         ('Saude'),
 --         ('Vestuario');
+
+-- insert into despesas (descricao, valor, data, id_categoria)
+-- values ('Supermercado',50.06, '2026-01-25',1),
+-- 		('Consulta e exames', 95.00, '2026-01-23', 5)
+
+-- insert into rendimentos (descricao, valor, data)
+-- values ('Salário Janeiro ',1050.50, '2026-01-25'),
+-- 		('Cartão alimentação', 120, '2026-01-23')
