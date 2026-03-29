@@ -20,6 +20,7 @@ CREATE TABLE categorias(
     nome 					VARCHAR(20) NOT NULL
 );
 
+
 -- Tabela de despesas
 DROP TABLE IF EXISTS despesas;
 CREATE TABLE despesas(
@@ -32,14 +33,16 @@ CREATE TABLE despesas(
     CONSTRAINT id_categoria_FK FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
 );
 
+
 -- Tabela de rendimentos
 DROP TABLE IF EXISTS rendimentos;
 CREATE TABLE rendimentos(
-	id_despesas				INT AUTO_INCREMENT PRIMARY KEY,
+	id_rendimento			INT AUTO_INCREMENT PRIMARY KEY,
     descricao				VARCHAR(30) NOT NULL,
     valor					DECIMAL(10, 2) NOT NULL,
     data					DATE NOT NULL
 );
+
 
 -- INSERT INTO categorias (NOME) 
 -- VALUES ('Alimentação'),
@@ -50,9 +53,15 @@ CREATE TABLE rendimentos(
 --         ('Vestuario');
 
 -- insert into despesas (descricao, valor, data, id_categoria)
--- values ('Supermercado',50.06, '2026-01-25',1),
--- 		('Consulta e exames', 95.00, '2026-01-23', 5)
+-- values ('Supermercado', 70.06, '2026-03-01',1),
+-- 		('Consulta e exames', 95.00, '2026-03-01', 5),
+-- 		('Renda MAR', 450.00, '2026-03-01', 3),
+-- 		('Passe MAR', 40.00, '2026-02-28', 2)
+-- ;
+        
 
 -- insert into rendimentos (descricao, valor, data)
--- values ('Salário Janeiro ',1050.50, '2026-01-25'),
--- 		('Cartão alimentação', 120, '2026-01-23')
+-- values ('Salário FEV ', 1050.50, '2026-02-25'),
+-- 		('Cartão alimentação FEV', 120, '2026-02-25'),
+--         ('Saldo inicial', 650.00, '2026-02-20')
+-- ;

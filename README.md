@@ -70,19 +70,19 @@ A estrutura segue uma lógica de chave estrangeira para organização:
 
 2. **Criar ambiente virtual**
   ```bash
-   python -m venv .venv
-   ```
+  python -m venv .venv
+  ```
 **Ativar:**
 
 *   **Windows:**
-    ```powershell
-    .venv\Scripts\activate
-    ```
+  ```powershell
+  .venv\Scripts\activate
+  ```
 
 *   **Linux / Mac:**
-    ```bash
-    source .venv/bin/activate
-    ```
+  ```bash
+  source .venv/bin/activate
+  ```
 
 
 3. **Instalar dependências**
