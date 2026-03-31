@@ -11,9 +11,10 @@
     - cálculo de saldo financeiro
 
     Autor: Erivaldo Jorge Centeio Lopes
-    Data: 13/03/2026
+    Data: 30/03/2026
     Curso: NST PROG28 - Programador de Infromática
 """
+
 from database.connection import conectar
 from services.gestor_financas import (
     inserir_despesa,
@@ -41,14 +42,19 @@ from utils.con_utils import clear_screen, pause, show_msg, ask
 
 DEFAULT_DATA = datetime.strptime("2020-12-31", "%Y-%m-%d").date()
 
+
+# ************* MAIN ************************************
+
+
 def main():
 
     try:
-        conexao = conectar()
-        show_msg("Ligaçao à base de dados bem sucedida!")
+        conexao = conectar()  
         conexao.close()
     except Exception as e:
-        show_msg("Erro ao ligar à base de dados: ", e)
+        show_msg("Erro ao ligar à base de dados!")
+        pause()
+        return  # ou exit()
 
     while True:
         clear_screen()
@@ -80,7 +86,7 @@ def main():
             case "8": eliminar_rendimento_ui()
             case "9": mostrar_saldo_ui()
             case "0":
-                pause("Enter para sair", indent=6)
+                pause("Enter para sair", indent = 6)
                 clear_screen()
 
                 break
@@ -88,7 +94,6 @@ def main():
 
 
 # ************* CABEÇALHO ************************************
-
 
 def header(titulo: str):
     clear_screen()
@@ -198,6 +203,8 @@ def eliminar_despesa_ui():
         pause()
 
 
+
+
 # ************* RENDIMENTOS ************************************
 
 def inserir_rendimento_ui():
@@ -254,7 +261,6 @@ def editar_rendimento_ui():
         valor = validar_valor("Novo valor: ")
         data = validar_data("Nova data: ")
 
-        # Chamada sem a categoria
         editar_rendimento(id_rendimento, descricao, valor, data)
         show_msg("Rendimento atualizado com sucesso!")
 
@@ -264,6 +270,7 @@ def editar_rendimento_ui():
     finally:
         print()
         pause()
+
 
 def eliminar_rendimento_ui():
     header("ELIMINAR RENDIMENTO")
@@ -288,6 +295,7 @@ def eliminar_rendimento_ui():
     finally:
         print()
         pause()
+
 
 
 

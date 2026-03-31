@@ -36,9 +36,11 @@ gestor-despesas-python/
 │   ├── database/               # Camada de dados
 │   │   ├── connection.py       # Configuração da conexão
 │   │   └── queries.py          # Consultas SQL (CRUD)
-│   ├── models/                 # Lógica de negócio
+│   ├── models/                 # Modelos de dados
 │   │   ├── despesa.py
 │   │   └── rendimento.py
+│   ├── services/               # Logica do negocia  
+│   │   ├── gestor_financas.py  
 │   ├── sql/                    # Scripts de base de dados
 │   │   └── schema.sql          # Criação de tabelas e sementes
 │   └── main.py                 # Ponto de entrada da aplicação

@@ -1,3 +1,27 @@
+"""
+    Projeto: Sistema de Gestão de Despesas Pessoais
+    Ficheiro: gestor_financas.py
+
+    Descrição:
+    Este módulo representa a camada de lógica da aplicação (services),
+    responsável por intermediar a comunicação entre a interface (main)
+    e a base de dados (queries).
+
+    Inclui:
+    - Encaminhamento de operações de despesas e rendimentos
+    - Cálculo de totais e saldo financeiro
+    - Validação de inputs do utilizador
+    - Verificação da existência de registos antes de operações críticas
+
+    Objetivo:
+    Centralizar a lógica de negócio da aplicação, garantindo uma separação
+    clara entre interface, lógica e acesso a dados.
+
+    Autor: Erivaldo Jorge Centeio Lopes
+    Data: 30/03/2026
+    Curso: NST PROG28 - Programador de Infromática
+"""
+
 from database import queries 
 from datetime import datetime
 from utils.con_utils import ask, show_msg

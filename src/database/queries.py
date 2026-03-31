@@ -10,6 +10,10 @@
     Dependências:
     - mysql.connector
     - connection.py
+
+    Autor: Erivaldo Jorge Centeio Lopes
+    Data: 30/03/2026
+    Curso: NST PROG28 - Programador de Infromática
 """
 
 from database.connection import conectar
