@@ -4,9 +4,6 @@
     Descrição:
     Este módulo contém as funções responsáveis pelas operações
     de base de dados relacionadas com despesas e rendimentos.
-    Autor: Erivaldo Jorge Centeio Lopes
-    Data: 13/03/2026
-    Curso: NST PROG28 - Programador de Infromática
     Dependências:
     - mysql.connector
     - connection.py
